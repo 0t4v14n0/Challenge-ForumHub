@@ -19,7 +19,7 @@ public class AutenticacaoController {
 	
 	private AuthenticationManager manager;
 	
-    @PostMapping()
+    @PostMapping
     public ResponseEntity logar(@RequestBody @Valid DadosAutenticacaoUsuario dados, UriComponentsBuilder uriBuilder) {
     	var token = new UsernamePasswordAuthenticationToken(dados.nome(), dados.senha());
     	var autentication = manager.authenticate(token);
