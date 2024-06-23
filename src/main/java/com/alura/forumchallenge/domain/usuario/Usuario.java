@@ -18,15 +18,14 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-
 @Table(name = "usuarios")
 @Entity(name = "Usuario")
-@Getter @Setter 
+@Getter @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(of = "id")
 public class Usuario implements UserDetails{
-	
+
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -34,6 +33,10 @@ public class Usuario implements UserDetails{
     private String nome;
     private String email;
     private String senha;
+    
+    public Usuario() {
+    	
+    }
     
     public Usuario(DadosCadastroUsuario dados) {
     	this.nome = dados.nome();
@@ -73,21 +76,39 @@ public class Usuario implements UserDetails{
 		this.senha = senha;
 	}
 
-	@Override
-	public Collection<? extends GrantedAuthority> getAuthorities() {
-		return List.of(new SimpleGrantedAuthority("ROLE_USER"));
-	}
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return List.of(new SimpleGrantedAuthority("ROLE_USER"));
+    }
 
-	@Override
-	public String getPassword() {
-		return email;
-	}
+    @Override
+    public String getPassword() {
+        return getSenha();
+    }
 
-	@Override
-	public String getUsername() {
-		return senha;
-	}
-    
-    
+    @Override
+    public String getUsername() {
+        return getEmail();
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return true;
+    }
 
 }
