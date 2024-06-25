@@ -5,6 +5,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.AuthenticationException;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,6 +14,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 import com.alura.forumchallenge.domain.usuario.DadosAutenticacaoUsuario;
 import com.alura.forumchallenge.domain.usuario.Usuario;
+import com.alura.forumchallenge.infra.security.DadosTokenJWT;
 import com.alura.forumchallenge.infra.security.TokenService;
 
 import jakarta.validation.Valid;
@@ -31,16 +33,16 @@ public class AutenticacaoController {
 
     @PostMapping
     public ResponseEntity<?> logar(@RequestBody @Valid DadosAutenticacaoUsuario dados, UriComponentsBuilder uriBuilder) {
-        var token = new UsernamePasswordAuthenticationToken(dados.email(), dados.senha());
-        try {
-        	
-            var authentication = manager.authenticate(token);
-            return ResponseEntity.ok(tokenService.gerarToken((Usuario)authentication.getPrincipal()));
-            
-        } catch (AuthenticationException e) {
-        	
-            return ResponseEntity.status(403).body("Falha na autenticação");
-            
-        }
+    	
+        var authenticationToken = new UsernamePasswordAuthenticationToken(dados.email(), dados.senha());
+        var authentication = manager.authenticate(authenticationToken);          
+        var tokenJWT = tokenService.gerarToken((Usuario)authentication.getPrincipal());          
+        return ResponseEntity.ok(new DadosTokenJWT(tokenJWT));
+        
+    }
+    
+    @GetMapping 
+    public String retorna() {
+    	return "ola";
     }
 }
