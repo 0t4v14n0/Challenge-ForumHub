@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import com.alura.forumchallenge.domain.usuario.DadosAutenticacaoUsuario;
+import com.alura.forumchallenge.domain.usuario.Usuario;
+import com.alura.forumchallenge.infra.security.TokenService;
 
 import jakarta.validation.Valid;
 import org.slf4j.Logger;
@@ -23,19 +25,22 @@ public class AutenticacaoController {
 
     @Autowired
     private AuthenticationManager manager;
-
-    private static final Logger logger = LoggerFactory.getLogger(AutenticacaoController.class);
+    
+    @Autowired
+    private TokenService tokenService;
 
     @PostMapping
     public ResponseEntity<?> logar(@RequestBody @Valid DadosAutenticacaoUsuario dados, UriComponentsBuilder uriBuilder) {
         var token = new UsernamePasswordAuthenticationToken(dados.email(), dados.senha());
         try {
+        	
             var authentication = manager.authenticate(token);
-            logger.info("Autenticação bem-sucedida para o usuário: " + dados.email());
-            return ResponseEntity.ok().build();
+            return ResponseEntity.ok(tokenService.gerarToken((Usuario)authentication.getPrincipal()));
+            
         } catch (AuthenticationException e) {
-            logger.error("Falha na autenticação para o usuário: " + dados.email(), e);
+        	
             return ResponseEntity.status(403).body("Falha na autenticação");
+            
         }
     }
 }
