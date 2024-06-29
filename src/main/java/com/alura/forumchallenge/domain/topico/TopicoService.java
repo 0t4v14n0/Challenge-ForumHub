@@ -35,6 +35,11 @@ public class TopicoService {
         var curso = cursoService.buscarCurso(dados.nomeCurso());
         
 		Topico topico = new Topico();
+		
+		if (repository.findByTitulo(dados.titulo()) != null || repository.findByMensagem(dados.mensagem()) != null) {
+		    throw new IllegalArgumentException("Tópico ou mensagem já criado...");
+		}
+		
         topico.setTitulo(dados.titulo());
         topico.setMensagem(dados.mensagem());
         topico.setAutor(usuario);
@@ -52,9 +57,45 @@ public class TopicoService {
 	                  .map(topico -> new DadosDetalhamentoTopico(topico))
 	                  .collect(Collectors.toList());
 	}
+	
+	public List<DadosDetalhamentoTopico> detalheTopico(Long id) {
+		
+		Optional<Topico> busca = repository.findById(id);
+			
+		return busca.stream()
+                .map(topico -> new DadosDetalhamentoTopico(topico))
+                .collect(Collectors.toList());
+		
+	}
+	
+	public Topico atualizarTopico(DadosAtualizacaoTopico dados, String usuarioLogado) {
+		
+		Usuario usuario = usuarioService.findByLogin(usuarioLogado);
+		
+		if(usuario.getId() != dados.id()){
+			throw new IllegalArgumentException("Nao pode completar a atualizacao...");
+		}
+		
+		Topico topico = (Topico) detalheTopico(dados.id());
+		
+		if(dados.titulo() != null) {
+			topico.setTitulo(dados.titulo());
+		}	
+		
+		if(dados.mensagem() != null) {
+			topico.setMensagem(dados.mensagem());
+		}	
+		
+		if(dados.nomeCurso() != null) {
+			topico.setCurso(dados.nomeCurso());
+		}
+		
+		return repository.save(topico);
+		
+	}
 
-	public Object deletar(Long id) {
-		var topico = repository.getReferenceById(id);
+	public Topico deletar(Long id) {
+		Topico topico = repository.getReferenceById(id);
 		topico.desativaTopico();
 		return topico;
 	}

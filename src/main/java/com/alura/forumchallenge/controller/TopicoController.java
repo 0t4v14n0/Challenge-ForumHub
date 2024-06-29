@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -19,6 +20,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 import org.springframework.security.core.Authentication;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.alura.forumchallenge.domain.topico.DadosAtualizacaoTopico;
 import com.alura.forumchallenge.domain.topico.DadosDetalhamentoTopico;
 import com.alura.forumchallenge.domain.topico.DadosNovoTopico;
 import com.alura.forumchallenge.domain.topico.TopicoService;
@@ -34,7 +36,7 @@ public class TopicoController {
 
     @PostMapping
     public ResponseEntity novoTopico(@RequestBody @Valid DadosNovoTopico dados,
-    								UriComponentsBuilder uriBuilder, 
+    								UriComponentsBuilder uriBuilder,
     								Authentication authentication) throws Exception {
     	
         String usuarioLogado = authentication.getName();
@@ -55,17 +57,27 @@ public class TopicoController {
         }
     }
     
+    @PutMapping
+    @Transactional
+    public ResponseEntity Atualizar(@RequestBody @Valid DadosAtualizacaoTopico dados,
+    								Authentication authentication) {
+    	
+    	String usuarioLogado = authentication.getName();
+    	
+		return ResponseEntity.ok(new DadosDetalhamentoTopico(topicoService.atualizarTopico(dados,usuarioLogado)));	
+    }
+    
     @GetMapping("/{id}")
-    public ResponseEntity listaTopicoId(@PathVariable Long id) {
+    public List<DadosDetalhamentoTopico> listaTopicoId(@PathVariable("id") Long id) {
     	    	
-    	return ResponseEntity.ok(null);
+    	return topicoService.detalheTopico(id);
     }
     
     @DeleteMapping("/{id}")
     @Transactional
-    public ResponseEntity DesativarOuResolvido(@PathVariable Long id) {
-    	topicoService.deletar(id);
-    	return ResponseEntity.ok(200);
+    public ResponseEntity DesativarOuResolvido(@PathVariable("id") Long id) {
+    	
+    	return ResponseEntity.ok(new DadosDetalhamentoTopico(topicoService.deletar(id)));
     }
 
 }

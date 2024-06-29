@@ -30,7 +30,7 @@ public class CadastroController {
     	
     	repository.save(usuario);
     	
-    	var uri = uriBuilder.path("/medicos/{id}").buildAndExpand(usuario.getId()).toUri();
+    	var uri = uriBuilder.path("").buildAndExpand(usuario.getId()).toUri();
     	
     	return ResponseEntity.created(uri).body(new DadosDetalhamentoUsuario(usuario));
     	
