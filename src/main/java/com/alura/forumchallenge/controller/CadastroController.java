@@ -13,6 +13,7 @@ import com.alura.forumchallenge.domain.usuario.DadosCadastroUsuario;
 import com.alura.forumchallenge.domain.usuario.DadosDetalhamentoUsuario;
 import com.alura.forumchallenge.domain.usuario.Usuario;
 import com.alura.forumchallenge.domain.usuario.UsuarioRepository;
+import com.alura.forumchallenge.domain.usuario.UsuarioService;
 
 import jakarta.validation.Valid;
 
@@ -23,17 +24,22 @@ public class CadastroController {
 	@Autowired
 	private UsuarioRepository repository;
 	
-    @PostMapping("/cadastro")
+	@Autowired
+	private UsuarioService usuarioService;
+	
+    @PostMapping
     @Transactional
-    public ResponseEntity cadastrar(@RequestBody @Valid DadosCadastroUsuario dados, UriComponentsBuilder uriBuilder ) {	
+    public ResponseEntity<DadosDetalhamentoUsuario> cadastrar(@RequestBody @Valid DadosCadastroUsuario dados, UriComponentsBuilder uriBuilder ) {	
+    	
     	var usuario = new Usuario(dados);
+    	
+    	usuario.setSenha(usuarioService.senhaCrypt(dados.senha()));
     	
     	repository.save(usuario);
     	
     	var uri = uriBuilder.path("").buildAndExpand(usuario.getId()).toUri();
     	
-    	return ResponseEntity.created(uri).body(new DadosDetalhamentoUsuario(usuario));
-    	
+    	return ResponseEntity.created(uri).body(new DadosDetalhamentoUsuario(usuario));	
     }
 
 }
