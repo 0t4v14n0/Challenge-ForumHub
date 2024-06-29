@@ -58,7 +58,7 @@ public class TopicoService {
 	                  .collect(Collectors.toList());
 	}
 	
-	public List<DadosDetalhamentoTopico> detalheTopico(Long id) {
+	public List<DadosDetalhamentoTopico> detalheTopico(@Valid Long id) {
 		
 		Optional<Topico> busca = repository.findById(id);
 			
@@ -68,7 +68,7 @@ public class TopicoService {
 		
 	}
 	
-	public Topico atualizarTopico(DadosAtualizacaoTopico dados, String usuarioLogado) {
+	public Topico atualizarTopico(@Valid DadosAtualizacaoTopico dados, String usuarioLogado) {
 		
 		Usuario usuario = usuarioService.findByLogin(usuarioLogado);
 		
@@ -94,7 +94,7 @@ public class TopicoService {
 		
 	}
 
-	public Topico deletar(Long id) {
+	public Topico deletar(@Valid Long id) {
 		Topico topico = repository.getReferenceById(id);
 		topico.desativaTopico();
 		return topico;

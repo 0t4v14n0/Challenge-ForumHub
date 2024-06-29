@@ -2,9 +2,11 @@ package com.alura.forumchallenge.domain.topico;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 import com.alura.forumchallenge.domain.curso.Curso;
+import com.alura.forumchallenge.domain.resposta.DadosDetalhamentoResposta;
 import com.alura.forumchallenge.domain.resposta.Resposta;
 import com.alura.forumchallenge.domain.usuario.Usuario;
 
@@ -120,6 +122,5 @@ public class Topico {
 	public void desativaTopico() {
 		this.status = "desativado";
 	}
-	
 	
 }

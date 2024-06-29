@@ -89,6 +89,5 @@ public class Resposta {
 	public void setTopico(Topico topico) {
 		this.topico = topico;
 	}
-    
-    
+     
 }

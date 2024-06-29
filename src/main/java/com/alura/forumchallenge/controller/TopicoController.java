@@ -35,7 +35,7 @@ public class TopicoController {
     private TopicoService topicoService;
 
     @PostMapping
-    public ResponseEntity novoTopico(@RequestBody @Valid DadosNovoTopico dados,
+    public ResponseEntity<Long> novoTopico(@RequestBody @Valid DadosNovoTopico dados,
     								UriComponentsBuilder uriBuilder,
     								Authentication authentication) throws Exception {
     	
@@ -59,7 +59,7 @@ public class TopicoController {
     
     @PutMapping
     @Transactional
-    public ResponseEntity Atualizar(@RequestBody @Valid DadosAtualizacaoTopico dados,
+    public ResponseEntity<DadosDetalhamentoTopico> Atualizar(@RequestBody @Valid DadosAtualizacaoTopico dados,
     								Authentication authentication) {
     	
     	String usuarioLogado = authentication.getName();
@@ -75,7 +75,7 @@ public class TopicoController {
     
     @DeleteMapping("/{id}")
     @Transactional
-    public ResponseEntity DesativarOuResolvido(@PathVariable("id") Long id) {
+    public ResponseEntity<DadosDetalhamentoTopico> DesativarOuResolvido(@PathVariable("id") Long id) {
     	
     	return ResponseEntity.ok(new DadosDetalhamentoTopico(topicoService.deletar(id)));
     }
