@@ -35,6 +35,7 @@ public class TopicoController {
     private TopicoService topicoService;
 
     @PostMapping
+    @Transactional
     public ResponseEntity<Long> novoTopico(@RequestBody @Valid DadosNovoTopico dados,
     								UriComponentsBuilder uriBuilder,
     								Authentication authentication) throws Exception {
