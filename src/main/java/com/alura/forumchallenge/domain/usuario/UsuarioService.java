@@ -25,9 +25,14 @@ public class UsuarioService {
             return usuario;
             
     	}catch(Exception e){
-    		System.out.println("deu ruim");
+    		throw new IllegalArgumentException("Usuário não encontrado com login: " + login);
     	}
-		return null;
+
+    }
+    
+    public DadosDetalhamentoUsuario detalhaUsuario(String usuarioLogado) {
+        Usuario usuario = findByLogin(usuarioLogado);
+        return new DadosDetalhamentoUsuario(usuario.getId(),usuario.getNome(), usuario.getEmail());
     }
     
     public String senhaCrypt(String senha) {

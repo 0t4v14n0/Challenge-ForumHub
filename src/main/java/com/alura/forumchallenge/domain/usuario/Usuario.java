@@ -6,7 +6,6 @@ import java.util.List;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.crypto.password.PasswordEncoder;
 
 import com.alura.forumchallenge.domain.resposta.Resposta;
 import com.alura.forumchallenge.domain.topico.Topico;

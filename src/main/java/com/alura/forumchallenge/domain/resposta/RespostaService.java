@@ -1,6 +1,7 @@
 package com.alura.forumchallenge.domain.resposta;
 
 import java.time.LocalDateTime;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -40,6 +41,21 @@ public class RespostaService {
         resposta.setTopico(topico);
 
         repository.save(resposta);
+    }
+    
+    @Transactional
+    public void atualizaResposta(@Valid DadosNovaResposta dados, String usuarioLogado) throws Exception {
+        Optional<Resposta> optionalResposta = repository.findById(dados.id());
+
+        if (optionalResposta.isPresent()) {
+            Resposta resposta = optionalResposta.get();
+            if (dados.mensagem() != null) {
+                resposta.setMensagem(dados.mensagem());
+            }
+            repository.save(resposta);
+        } else {
+            throw new Exception("Resposta with id " + dados.id() + " not found.");
+        }
     }
 
 }
