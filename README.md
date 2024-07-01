@@ -32,7 +32,10 @@ Para executar o projeto em seu ambiente local, siga os passos abaixo:
 - Após iniciar o servidor, acesse as funcionalidades através de um cliente HTTP ou através de uma interface de usuário (front-end) desenvolvida.
 
 <h1>EndPoints</h1>
-<img src="imagens/endpoint.png" alt="End Points" width="400" height="400">
+<img src="imagens/points.png" alt="End Points" width="400" height="400">
+
+
+
 
 
 <h1>Tecnologias Utilizadas</h1>
