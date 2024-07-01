@@ -3,9 +3,25 @@
 <h2>Descrição</h2>
 <p>Forum-Hub é uma API para um fórum de discussão, desenvolvida com Spring Boot e utilizando MySQL para armazenamento de dados. Esta API permite a criação, gerenciamento e interação com tópicos de discussão. A segurança é garantida pelo Spring Security, assegurando que apenas usuários autenticados possam acessar determinados endpoints.</p>
 
-<img src="imagens/diagramaBD.png" alt="Diagrama do Banco de Dados" width="800" height="600">
+<h2>Sumario</h2>
+<ul>
+  <li><a href="#diagrama">Diagrama do Banco de Dados</a></li>
+  <li><a href="#config">Configuração do Ambiente de Desenvolvimento</a></li>
+  <li>
+      <a href="#endpoint">EndPoints</a>
+      <ul>
+          <li><a href="#cadastro">POST /cadastro</a></li>
+          <li><a href="#login">POST /login</a></li>
+          <li><a href="#main">Arquivo "main.py"</a></li>
+          <li><a href="#index">Arquivo "index.php"</a></li>
+      </ul>
+  </li>
+  <li><a href="#tecnologia">Tecnologias Usadas</a></li>
+</ul>
 
-## Configuração do Ambiente de Desenvolvimento
+<img id = "diagrama" src="imagens/diagramaBD.png" alt="Diagrama do Banco de Dados" width="800" height="600">
+
+<h1 id = "config">Configuração do Ambiente de Desenvolvimento </h1>
 
 Para executar o projeto em seu ambiente local, siga os passos abaixo:
 
@@ -28,17 +44,17 @@ Para executar o projeto em seu ambiente local, siga os passos abaixo:
 4. **Acessar as Funcionalidades:**
 - Após iniciar o servidor, acesse as funcionalidades através de um cliente HTTP ou através de uma interface de usuário (front-end) desenvolvida.
 
-<h1>EndPoints</h1>
+<h1 id = "endpoint">EndPoints</h1>
 <img src="imagens/points.png" alt="End Points" width="800" height="600">
 
-<h1>Cadastro POST /cadastro</h1>
+<h1 id = "cadastro">Cadastro POST /cadastro</h1>
 <p>Entrada:</p>
 <img src="imagens/cadastro1.png" alt="End Points" width="150" height="100">
 
 <p>Saida:</p>
 <img src="imagens/cadastro2.png" alt="End Points" width="150" height="100">
 
-<h1>Login POST /login</h1>
+<h1 id = "login">Login POST /login</h1>
 <p>Entrada:</p>
 <img src="imagens/login.png" alt="End Points" width="150" height="100">
 <p>Saida:</p>
