@@ -6,7 +6,7 @@
 <img src="imagens/Badge-Spring.png" alt="Diagrama do Banco de Dados" width="300" height="300">
 
 <h1>Diagrama do Banco de Dados</h1>
-<img src="imagens/diagramaBD.png" alt="Diagrama do Banco de Dados" width="400" height="400">
+<img src="imagens/diagramaBD.png" alt="Diagrama do Banco de Dados" width="600" height="400">
 
 ## Configuração do Ambiente de Desenvolvimento
 
@@ -32,7 +32,7 @@ Para executar o projeto em seu ambiente local, siga os passos abaixo:
 - Após iniciar o servidor, acesse as funcionalidades através de um cliente HTTP ou através de uma interface de usuário (front-end) desenvolvida.
 
 <h1>EndPoints</h1>
-<img src="imagens/endpoints.png" alt="End Points" width="400" height="400">
+<img src="imagens/endpoint.png" alt="End Points" width="400" height="400">
 
 
 <h1>Tecnologias Utilizadas</h1>
