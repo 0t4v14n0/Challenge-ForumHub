@@ -30,7 +30,7 @@ public class TopicoService {
 	private TopicoRepository repository;
 
 	@Transactional
-	public Long cadastrar(@Valid DadosNovoTopico dados, String usuarioLogado) {
+	public DadosDetalhamentoTopico cadastrar(@Valid DadosNovoTopico dados, String usuarioLogado) {
 		
 		Usuario usuario = usuarioService.findByLogin(usuarioLogado);
 				
@@ -48,9 +48,10 @@ public class TopicoService {
         topico.setCurso(curso);
         topico.setDataCriacao(LocalDateTime.now());
         topico.setStatus("Ativo");
+        
+        repository.save(topico);
 
-        Topico cadastrarTopico = repository.save(topico);
-        return cadastrarTopico.getId();
+        return new DadosDetalhamentoTopico(topico);
 	}
 	
     public Page<DadosDetalhamentoTopico> listaTopicos(Pageable pageable) {

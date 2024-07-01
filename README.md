@@ -1,11 +1,7 @@
-## Forum HUB
+<h1> Forum HUB </h1>
 
 <p>Forum-Hub é uma API para um fórum de discussão, desenvolvida com Spring Boot e utilizando MySQL para armazenamento de dados. Esta API permite a criação, gerenciamento e interação com tópicos de discussão. A segurança é garantida pelo Spring Security, assegurando que apenas usuários autenticados possam acessar determinados endpoints.</p>
 
-<h1>Badge Spring</h1>
-<img src="imagens/Badge-Spring.png" alt="Diagrama do Banco de Dados" width="300" height="300">
-
-<h1>Diagrama do Banco de Dados</h1>
 <img src="imagens/diagramaBD.png" alt="Diagrama do Banco de Dados" width="600" height="400">
 
 ## Configuração do Ambiente de Desenvolvimento
@@ -32,11 +28,23 @@ Para executar o projeto em seu ambiente local, siga os passos abaixo:
 - Após iniciar o servidor, acesse as funcionalidades através de um cliente HTTP ou através de uma interface de usuário (front-end) desenvolvida.
 
 <h1>EndPoints</h1>
-<img src="imagens/points.png" alt="End Points" width="400" height="400">
+<img src="imagens/points.png" alt="End Points" width="600" height="500">
 
+<h1>Cadastro POST /cadastro</h1>
+<p>Entrada:</p>
+<img src="imagens/cadastro1.png" alt="End Points" width="150" height="100">
 
+<p>Saida:</p>
+<img src="imagens/cadastro2.png" alt="End Points" width="150" height="100">
 
+<h1>Login POST /login</h1>
+<p>Entrada:</p>
+<img src="imagens/login.png" alt="End Points" width="150" height="100">
+<p>Saida:</p>
 
+  ```
+  "Token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqb2FvQGV4YW1wbGUuY29tIiwiaXNzIjoiQVBJIGZvcnVtX2h1YiIsImlkIjozLCJleHAiOjE3MTk4MjA0OTN9.LHaeTw-Wm8dJzN2ScctocW_17ezaxpFA7bSz43Rz86k"
+  ```
 
 <h1>Tecnologias Utilizadas</h1>
 	<ul>

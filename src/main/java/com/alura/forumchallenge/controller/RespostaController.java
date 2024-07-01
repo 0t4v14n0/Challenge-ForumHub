@@ -34,7 +34,7 @@ public class RespostaController {
             								Authentication authentication) throws Exception {
     	String usuarioLogado = authentication.getName();
     	respostaService.atualizaResposta(dados, usuarioLogado);
-		return ResponseEntity.ok().build();
+		return ResponseEntity.ok("Atualizacao Feita");
     	
     }
     

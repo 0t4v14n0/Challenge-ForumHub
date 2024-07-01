@@ -37,15 +37,13 @@ public class TopicoController {
 
     @PostMapping
     @Transactional
-    public ResponseEntity<Long> novoTopico(@RequestBody @Valid DadosNovoTopico dados,
+    public ResponseEntity<DadosDetalhamentoTopico> novoTopico(@RequestBody @Valid DadosNovoTopico dados,
     								UriComponentsBuilder uriBuilder,
     								Authentication authentication) throws Exception {
     	
         String usuarioLogado = authentication.getName();
         
-        Long topicoId = topicoService.cadastrar(dados, usuarioLogado);
-        
-        return ResponseEntity.ok(topicoId);
+        return ResponseEntity.ok(topicoService.cadastrar(dados, usuarioLogado));
     }
     
     @GetMapping
