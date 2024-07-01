@@ -10,9 +10,11 @@ import org.springframework.web.bind.annotation.RestController;
 import com.alura.forumchallenge.domain.usuario.DadosDetalhamentoUsuario;
 import com.alura.forumchallenge.domain.usuario.UsuarioService;
 
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 
 @RestController
 @RequestMapping("/usuarios")
+@SecurityRequirement(name = "bearer-key")
 public class UsuarioController {
 	
 	@Autowired

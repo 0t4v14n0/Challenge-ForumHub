@@ -24,10 +24,12 @@ import com.alura.forumchallenge.domain.topico.DadosDetalhamentoTopico;
 import com.alura.forumchallenge.domain.topico.DadosNovoTopico;
 import com.alura.forumchallenge.domain.topico.TopicoService;
 
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/topico")
+@SecurityRequirement(name = "bearer-key")
 public class TopicoController {
 	
     @Autowired

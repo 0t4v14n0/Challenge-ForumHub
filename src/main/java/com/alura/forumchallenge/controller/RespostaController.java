@@ -11,16 +11,18 @@ import org.springframework.web.bind.annotation.RestController;
 import com.alura.forumchallenge.domain.resposta.DadosNovaResposta;
 import com.alura.forumchallenge.domain.resposta.RespostaService;
 
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/resposta")
+@SecurityRequirement(name = "bearer-key")
 public class RespostaController {
 
     private RespostaService respostaService;
 
     @PostMapping
-    public ResponseEntity novaResposta(@RequestBody @Valid DadosNovaResposta dados,
+    public ResponseEntity<?> novaResposta(@RequestBody @Valid DadosNovaResposta dados,
                                        Authentication authentication) {
         String usuarioLogado = authentication.getName();
         respostaService.cadastroResposta(dados, usuarioLogado);
@@ -28,7 +30,7 @@ public class RespostaController {
     }
     
     @PostMapping("/{id}")
-    public ResponseEntity atualizarResposta(@RequestBody @Valid @PathVariable("id") Long id, DadosNovaResposta dados,
+    public ResponseEntity<?> atualizarResposta(@RequestBody @Valid @PathVariable("id") Long id, DadosNovaResposta dados,
             								Authentication authentication) throws Exception {
     	String usuarioLogado = authentication.getName();
     	respostaService.atualizaResposta(dados, usuarioLogado);

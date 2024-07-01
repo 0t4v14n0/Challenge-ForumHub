@@ -16,10 +16,12 @@ import com.alura.forumchallenge.domain.curso.DadosAualizacaoCurso;
 import com.alura.forumchallenge.domain.curso.DadosDetalhamentoCurso;
 import com.alura.forumchallenge.domain.curso.DadosNovoCurso;
 
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/curso")
+@SecurityRequirement(name = "bearer-key")
 public class CursoController {
 	
 	@Autowired
