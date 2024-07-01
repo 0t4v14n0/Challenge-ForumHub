@@ -1,8 +1,9 @@
 <h1> Forum HUB </h1>
 
+<h2>Descrição</h2>
 <p>Forum-Hub é uma API para um fórum de discussão, desenvolvida com Spring Boot e utilizando MySQL para armazenamento de dados. Esta API permite a criação, gerenciamento e interação com tópicos de discussão. A segurança é garantida pelo Spring Security, assegurando que apenas usuários autenticados possam acessar determinados endpoints.</p>
 
-<img src="imagens/diagramaBD.png" alt="Diagrama do Banco de Dados" width="700" height="500">
+<img src="imagens/diagramaBD.png" alt="Diagrama do Banco de Dados" width="800" height="600">
 
 ## Configuração do Ambiente de Desenvolvimento
 
@@ -28,7 +29,7 @@ Para executar o projeto em seu ambiente local, siga os passos abaixo:
 - Após iniciar o servidor, acesse as funcionalidades através de um cliente HTTP ou através de uma interface de usuário (front-end) desenvolvida.
 
 <h1>EndPoints</h1>
-<img src="imagens/points.png" alt="End Points" width="600" height="500">
+<img src="imagens/points.png" alt="End Points" width="800" height="600">
 
 <h1>Cadastro POST /cadastro</h1>
 <p>Entrada:</p>
@@ -54,7 +55,20 @@ Para executar o projeto em seu ambiente local, siga os passos abaixo:
 
 <h1>Lista Topico GET /topico</h1>
 <img src="imagens/getTopico.png" alt="End Points" width="400" height="500">
+
 <p>A maioria retorna esse tipo de json, </p>
+
+<h1>Resposta POST /resposta</h1>
+<p>Entrada:</p>
+<img src="imagens/resposta1.png" alt="End Points" width="160" height="100">
+
+<h1>Curso POST /curso</h1>
+<p>Entrada:</p>
+<img src="imagens/curso1.png" alt="End Points" width="160" height="100">
+
+<p>Saida:</p>
+<img src="imagens/curso2.png" alt="End Points" width="160" height="100">
+
 
 <h1>Tecnologias Utilizadas</h1>
 	<ul>
