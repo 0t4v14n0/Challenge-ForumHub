@@ -12,8 +12,10 @@
       <ul>
           <li><a href="#cadastro">POST /cadastro</a></li>
           <li><a href="#login">POST /login</a></li>
-          <li><a href="#main">Arquivo "main.py"</a></li>
-          <li><a href="#index">Arquivo "index.php"</a></li>
+          <li><a href="#ptopico">POST /topico</a></li>
+          <li><a href="#gtopico">GET /topico</a></li>
+          <li><a href="#presposta">POST /resposta</a></li>
+          <li><a href="#pcurso">POST /curso</a></li>
       </ul>
   </li>
   <li><a href="#tecnologia">Tecnologias Usadas</a></li>
@@ -63,22 +65,20 @@ Para executar o projeto em seu ambiente local, siga os passos abaixo:
   "Token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqb2FvQGV4YW1wbGUuY29tIiwiaXNzIjoiQVBJIGZvcnVtX2h1YiIsImlkIjozLCJleHAiOjE3MTk4MjA0OTN9.LHaeTw-Wm8dJzN2ScctocW_17ezaxpFA7bSz43Rz86k"
   ```
    
-<h1>Novo Topico POST /topico</h1>
+<h1 id ="ptopico">Novo Topico POST /topico</h1>
 <p>Entrada:</p>
 <img src="imagens/cadastroTopico1.PNG" alt="End Points" width="150" height="100">
 <p>Saida:</p>
 <img src="imagens/cadastroTopico2.PNG" alt="End Points" width="400" height="500">
 
-<h1>Lista Topico GET /topico</h1>
+<h1 id = "gtopico">Lista Topico GET /topico</h1>
 <img src="imagens/getTopico.png" alt="End Points" width="400" height="500">
 
-<p>A maioria retorna esse tipo de json, </p>
-
-<h1>Resposta POST /resposta</h1>
+<h1 id = "presposta">Resposta POST /resposta</h1>
 <p>Entrada:</p>
 <img src="imagens/resposta1.png" alt="End Points" width="160" height="100">
 
-<h1>Curso POST /curso</h1>
+<h1 id = "pcurso">Curso POST /curso</h1>
 <p>Entrada:</p>
 <img src="imagens/curso1.png" alt="End Points" width="160" height="100">
 
