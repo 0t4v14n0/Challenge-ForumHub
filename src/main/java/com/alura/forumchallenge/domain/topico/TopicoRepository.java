@@ -1,8 +1,9 @@
 package com.alura.forumchallenge.domain.topico;
 
-import java.util.List;
 import java.util.Optional;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -11,7 +12,7 @@ import jakarta.validation.constraints.NotBlank;
 @Repository
 public interface TopicoRepository extends JpaRepository<Topico, Long>{
 
-	List<Topico> findByStatus(String status);
+	Page<Topico> findByStatus(String status, Pageable pageable);
 
 	Optional<Topico> getTopicById(Long id);
 

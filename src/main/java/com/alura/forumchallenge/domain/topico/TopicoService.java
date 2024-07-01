@@ -6,6 +6,8 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.alura.forumchallenge.domain.curso.CursoService;
@@ -51,12 +53,10 @@ public class TopicoService {
         return cadastrarTopico.getId();
 	}
 	
-	public List<DadosDetalhamentoTopico> listaTopicos() {
-	    List<Topico> topicos = repository.findByStatus("Ativo");
-	    return topicos.stream()
-	                  .map(topico -> new DadosDetalhamentoTopico(topico))
-	                  .collect(Collectors.toList());
-	}
+    public Page<DadosDetalhamentoTopico> listaTopicos(Pageable pageable) {
+        Page<Topico> topicos = repository.findByStatus("Ativo", pageable);
+        return topicos.map(topico -> new DadosDetalhamentoTopico(topico));
+    }
 	
 	public List<DadosDetalhamentoTopico> detalheTopico(@Valid Long id) {
 		

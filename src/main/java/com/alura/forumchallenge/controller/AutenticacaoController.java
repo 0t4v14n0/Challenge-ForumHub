@@ -42,9 +42,4 @@ public class AutenticacaoController {
         return ResponseEntity.ok(new DadosTokenJWT(tokenJWT));
         
     }
-    
-    @GetMapping 
-    public String retorna() {
-    	return "ola";
-    }
 }

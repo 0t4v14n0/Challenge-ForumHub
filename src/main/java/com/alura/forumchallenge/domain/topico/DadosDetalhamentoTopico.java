@@ -10,12 +10,13 @@ public record DadosDetalhamentoTopico(
         Long id,
         String titulo,
         String mensagem,
-        LocalDateTime datacriacao,
+        LocalDateTime dataCriacao,
+        String status,
         List<DadosDetalhamentoResposta> respostas
 ) {
 
     public DadosDetalhamentoTopico(Topico topico) {
-        this(topico.getId(), topico.getTitulo(), topico.getMensagem(), topico.getDataCriacao(),
+        this(topico.getId(), topico.getTitulo(), topico.getMensagem(), topico.getDataCriacao(),topico.getStatus(),
                 topico.getResposta().stream()
                         .map(DadosDetalhamentoResposta::new)
                         .collect(Collectors.toList()));

@@ -18,38 +18,45 @@ import jakarta.persistence.EntityNotFoundException;
 @RestControllerAdvice
 public class TratadorDeErros {
 
-    @ExceptionHandler(EntityNotFoundException.class)
+    @SuppressWarnings("rawtypes")
+	@ExceptionHandler(EntityNotFoundException.class)
     public ResponseEntity tratarErro404() {
         return ResponseEntity.notFound().build();
     }
 
-    @ExceptionHandler(MethodArgumentNotValidException.class)
+    @SuppressWarnings("rawtypes")
+	@ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity tratarErro400(MethodArgumentNotValidException ex) {
         var erros = ex.getFieldErrors();
         return ResponseEntity.badRequest().body(erros.stream().map(DadosErroValidacao::new).toList());
     }
 
-    @ExceptionHandler(HttpMessageNotReadableException.class)
+    @SuppressWarnings("rawtypes")
+	@ExceptionHandler(HttpMessageNotReadableException.class)
     public ResponseEntity tratarErro400(HttpMessageNotReadableException ex) {
         return ResponseEntity.badRequest().body(ex.getMessage());
     }
 
-    @ExceptionHandler(BadCredentialsException.class)
+    @SuppressWarnings("rawtypes")
+	@ExceptionHandler(BadCredentialsException.class)
     public ResponseEntity tratarErroBadCredentials() {
         return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Credenciais inválidas");
     }
 
-    @ExceptionHandler(AuthenticationException.class)
+    @SuppressWarnings("rawtypes")
+	@ExceptionHandler(AuthenticationException.class)
     public ResponseEntity tratarErroAuthentication() {
         return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Falha na autenticação");
     }
 
-    @ExceptionHandler(AccessDeniedException.class)
+    @SuppressWarnings("rawtypes")
+	@ExceptionHandler(AccessDeniedException.class)
     public ResponseEntity tratarErroAcessoNegado() {
         return ResponseEntity.status(HttpStatus.FORBIDDEN).body("Acesso negado");
     }
 
-    @ExceptionHandler(Exception.class)
+    @SuppressWarnings("rawtypes")
+	@ExceptionHandler(Exception.class)
     public ResponseEntity tratarErro500(Exception ex) {
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Erro: " +ex.getLocalizedMessage());
     }
